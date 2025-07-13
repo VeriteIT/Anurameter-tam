@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anura Meter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Abhaya Libre', Arial, sans-serif;
+      background: #fafbfc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      margin-bottom: 24px;
+    }
+    .banner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 16px;
+      border: none;
+      box-shadow: none;
+    }
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+    h1, h2, h3, h4, h5, h6, .focus-title, .focus-card h3, .data-card h3 {
+      font-family: 'Abhaya Libre', Arial, sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.9rem !important;
+    }
+    h1 {
+      font-size: inherit;
+    }
+    h2, .focus-title {
+      font-size: 1.3rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+    }
+    h4 {
+      font-size: inherit;
+    }
+    .focus-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      margin-top: 36px;
+      text-align: center;
+    }
+    .focus-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 18px;
+    }
+    .focus-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(60,72,88,0.13);
+      padding: 20px 14px;
+      min-width: 180px;
+      max-width: 220px;
+      flex: 1 1 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      transition: box-shadow 0.2s;
+    }
+    .focus-card:hover {
+      box-shadow: 0 8px 24px rgba(60,72,88,0.18);
+    }
+    .focus-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    .data-sources-section {
+      max-width: 900px;
+      margin: 24px auto 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .data-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .data-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(60,72,88,0.13);
+      padding: 24px 20px;
+      min-width: 220px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      transition: box-shadow 0.2s;
+      justify-content: flex-start;
+    }
+    .data-card:hover {
+      box-shadow: 0 8px 24px rgba(60,72,88,0.18);
+    }
+    .data-card h3 {
+      min-height: 48px;
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 10px;
+    }
+    .data-card p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .data-icon {
+      font-size: 2rem;
+      color: #2d7ff9;
+    }
+    .disclaimer-section {
+      max-width: 900px;
+      margin: 32px auto 24px auto;
+      padding: 0 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(60,72,88,0.13);
+      text-align: center;
+    }
+    .disclaimer-section h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .disclaimer-section p,
+    .about-section p,
+    .focus-card p,
+    .data-card h3,
+    .data-card p {
+      font-family: 'Abhaya Libre', Arial, sans-serif !important;
+      font-weight: 400;
+      font-size: 16px !important;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      margin-top: 0;
+      text-align: left;
+      display: block;
+    }
+    .about-section {
+      max-width: 1200px;
+      margin: 24px auto 0 auto;
+      padding: 0 20px;
+    }
+    .focus-card p {
+      margin: 0;
+      text-align: left;
+      text-indent: 0;
+    }
+    @media (max-width: 700px) {
+      .focus-cards {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .focus-card {
+        min-width: 30%;
+        max-width: 32%;
+        flex: 1 1 30%;
+        margin-bottom: 18px;
+      }
+      .focus-card:nth-child(n+4) {
+        min-width: 48%;
+        max-width: 49%;
+        flex: 1 1 48%;
+      }
+    }
+    .anura-btn {
+      background: #672b49;
+      color: #fff;
+      font-family: 'Barlow', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(60,72,88,0.28);
+      transition: box-shadow 0.25s cubic-bezier(.4,2,.6,1), background 0.2s;
+      display: inline-block;
+    }
+    .anura-btn:hover {
+      box-shadow: 0 16px 48px rgba(60,72,88,0.32);
+    }
+    @media (max-width: 900px) {
+      .progress-cards {
+        flex-wrap: wrap !important;
+      }
+    }
+    .dropdown-content a:hover {
+      background: #f5f5f5 !important;
+    }
+    .about-section, .data-card p, .disclaimer-section p, .focus-card p, .data-sources-section p, .progress-cards p, p, li {
+      font-family: 'Abhaya Libre', Arial, sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner Section -->
+  <div class="banner" style="position:relative;">
+    <a href="https://manthri.lk/ta/anura-meter" target="_blank" rel="noopener noreferrer" style="display:block;">
+      <img src="Anura Meter Banner_Tamil.png" alt="Anura Meter Banner" style="display:block; width:100%; border:none; box-shadow:none;" />
+    </a>
+    <div style="position:absolute;top:20px;right:24px;z-index:2;">
+      <div class="dropdown" style="position:relative;display:inline-block;">
+        <button class="anura-btn" style="padding:10px 20px;font-size:1rem;">முந்தைய முன்னேற்ற<br>கண்காணிப்பு ▼</button>
+        <div class="dropdown-content" style="display:none;position:absolute;right:0;top:110%;background:#fff;min-width:220px;box-shadow:0 4px 18px rgba(60,72,88,0.13);border-radius:8px;overflow:hidden;">
+          <a href="https://manthri.lk/en/imf_tracker" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px 20px;color:#222;text-decoration:none;font-family:'Barlow',Arial,sans-serif;font-size:1rem;">IMF கண்காணிப்பானை</a>
+          <a href="https://manthri.lk/en/gotameter" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px 20px;color:#222;text-decoration:none;font-family:'Barlow',Arial,sans-serif;font-size:1rem;">கோட்டா-மீட்டர்</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About the Anura Meter Section -->
+  <div class="about-section container">
+    <h2>அனுர மீட்டரைப் பற்றி</h2>
+    <p style="text-align: justify;">
+      ஜனாதிபதி அனுர குமார திசாநாயக்கவின் 2024 ஜனாதிபதித் தேர்தல் விஞ்ஞாபனத்தில் தெரிந்தெடுக்கப்பட்ட திட்டங்களின் முன்னேற்றத்தை அனுர மீட்டர் கண்காணிக்கிறது. இந்தத் தெரிவானது அதிக பொது நலன் சார்ந்ததாகக் கருதப்படும் வாக்குறுதிகளில் கவனம் செலுத்துகிறது. அரசாங்கத்திடமிருந்து அல்லது பிற தொடர்புடைய ஆதாரங்களில் இருந்து எங்களுக்குத் தகவல் கிடைக்கும்போது முன்னேற்றம் புதுப்பிக்கப்படும். கண்காணிக்கப்படும் அம்சங்களை மேம்படுத்தவும், முன்னேற்றங்களை புதுப்பிக்கவும் நீங்கள் வழங்கக்கூடிய எந்தவொரு உதவியையும் நாங்கள் வரவேற்கிறோம்.
+    </p>
+  </div>
+
+  <!-- Areas of Focus Section -->
+  <div class="container" style="margin-top: 40px;">
+    <div class="focus-title">கவனம் செலுத்தும் முக்கிய விடயங்கள்</div>
+    <div class="focus-cards" style="flex-wrap:nowrap;overflow:visible;">
+              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+          <span class="focus-icon">
+            <!-- Social Protection: Heart SVG -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 24S4 17 4 10.5C4 7 7 4 10.5 4C12.5 4 14 5.5 14 5.5C14 5.5 15.5 4 17.5 4C21 4 24 7 24 10.5C24 17 14 24 14 24Z" stroke="#111" stroke-width="2" fill="white"/></svg>
+          </span>
+          <div>
+            <h3>சமூகப் பாதுகாப்பு</h3>
+            <p>வறுமை, பாதிப்பு மற்றும் பாகுபாட்டைக் குறைப்பதை நோக்கமாகக் கொண்ட கொள்கைகள், திட்டங்கள் மற்றும் ஒழுங்குமுறை பொறிமுறைகள்</p>
+          </div>
+        </div>
+              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+          <span class="focus-icon">
+            <!-- Economic Reform: Dollar sign SVG -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="13" stroke="#111" stroke-width="2" fill="white"/><text x="50%" y="58%" text-anchor="middle" fill="#111" font-size="16" font-family="Arial" dy=".3em">$</text></svg>
+          </span>
+          <div>
+            <h3>பொருளாதார சீர்திருத்தம்</h3>
+            <p style="margin:0;">முதலீடு, வர்த்தகம், பொது நிதி மற்றும் வரிச் சீர்திருத்தங்களில் கவனம் செலுத்துதல்</p>
+          </div>
+        </div>
+              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+          <span class="focus-icon">
+            <!-- Governance: Shield SVG -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 3L24 7V14C24 20 14 25 14 25C14 25 4 20 4 14V7L14 3Z" stroke="#111" stroke-width="2" fill="white"/></svg>
+          </span>
+          <div>
+            <h3>ஆளுகை</h3>
+            <p style="margin:0;">அதிக வெளிப்படைத்தன்மை மற்றும் பொறுப்புக்கூறலை உறுதி செய்வதற்காக அரசாங்கத்திற்குள் முடிவெடுக்கும் செயல்முறைகள், ஒருங்கிணைப்பு மற்றும் முகாமைத்துவ அமைப்புகள்</p>
+          </div>
+        </div>
+              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+          <span class="focus-icon">
+            <!-- Anti-Corruption: Handcuffs SVG -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="19" r="3" stroke="#111" stroke-width="2" fill="white"/><circle cx="19" cy="9" r="3" stroke="#111" stroke-width="2" fill="white"/><path d="M11.5 16.5L16.5 11.5" stroke="#111" stroke-width="2"/></svg>
+          </span>
+          <div>
+            <h3>ஊழல் எதிர்ப்பு</h3>
+            <p style="margin:0;">பொது நிறுவனங்கள் மற்றும் அரசாங்க நடவடிக்கைகளுக்குள் ஊழல் நடைமுறைகளைத் தடுக்க, கண்டறிந்து தண்டனை வழங்க அமைப்புகள் மற்றும் சட்ட கட்டமைப்புகளை செயல்படுத்துதல்</p>
+          </div>
+        </div>
+              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+          <span class="focus-icon">
+            <!-- Law and Order: Gavel SVG -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="17" y="5" width="6" height="2" rx="1" transform="rotate(45 17 5)" fill="white" stroke="#111" stroke-width="2"/><rect x="7" y="15" width="6" height="2" rx="1" transform="rotate(45 7 15)" fill="white" stroke="#111" stroke-width="2"/><rect x="12" y="10" width="8" height="2" rx="1" transform="rotate(45 12 10)" fill="white" stroke="#111" stroke-width="2"/></svg>
+          </span>
+          <div>
+            <h3>சட்டம் மற்றும் ஒழுங்கு</h3>
+            <p style="margin:0;">கடந்த கால அரசியல் வன்முறைகளுக்கு நீதி வழங்குதல், உயர்மட்ட குற்றங்களுக்கு பொறுப்புக்கூறலை உறுதி செய்தல் மற்றும் சட்டத்தின் ஆட்சியை நிலைநாட்டுதல்</p>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Progress Statuses and Data Sources Section -->
+  <div class="progress-status-section" style="max-width:1200px;margin:36px auto 36px auto;padding:0 20px;">
+    <div class="focus-title" style="margin-top:0;margin-bottom:18px;">முன்னேற்ற நிலைகள்</div>
+    <div class="progress-cards" style="display:flex;gap:20px;flex-wrap:nowrap;justify-content:center;">
+      <div class="focus-card" style="min-width:160px;max-width:200px;align-items:flex-start;padding:20px 14px;">
+        <img src="Progress statuses/4.1 No update.png" alt="No Update" style="width:48px;height:48px;object-fit:contain;image-rendering:auto;border-radius:6px;margin-bottom:14px;" />
+        <div style="font-weight:700;font-size:0.9rem;font-family:'Abhaya Libre',Arial,sans-serif;margin-bottom:6px;">எந்த புதுப்பிப்பும் இல்லை</div>
+        <div style="font-size:14px;font-weight:400;line-height:1.6;font-family:'Abhaya Libre',Arial,sans-serif;">எந்தவொரு அதிகாரப்பூர்வ மூலமும் எந்தத் தெளிவான நடவடிக்கையும் எடுக்கப்படவில்லை அல்லது பதிவு செய்யப்படவில்லை</div>
+      </div>
+      <div class="focus-card" style="min-width:160px;max-width:200px;align-items:flex-start;padding:20px 14px;">
+        <img src="Progress statuses/4.2 Initiated.png" alt="Initiated" style="width:48px;height:48px;object-fit:contain;image-rendering:auto;border-radius:6px;margin-bottom:14px;" />
+        <div style="font-weight:700;font-size:0.9rem;font-family:'Abhaya Libre',Arial,sans-serif;margin-bottom:6px;">தொடங்கப்பட்டது</div>
+        <div style="font-size:14px;font-weight:400;line-height:1.6;font-family:'Abhaya Libre',Arial,sans-serif;">பட்ஜெட் ஒதுக்கீடு அல்லது அமைச்சரவை முடிவு மூலம் நடவடிக்கை பரிசீலிக்கப்பட்டுள்ளது</div>
+      </div>
+      <div class="focus-card" style="min-width:160px;max-width:200px;align-items:flex-start;padding:20px 14px;">
+        <img src="Progress statuses/4.3 Partially Kept.png" alt="Partially Kept" style="width:48px;height:48px;object-fit:contain;image-rendering:auto;border-radius:6px;margin-bottom:14px;" />
+        <div style="font-weight:700;font-size:0.9rem;font-family:'Abhaya Libre',Arial,sans-serif;margin-bottom:6px;">பகுதியளவு நிறைவேற்றப்பட்டது</div>
+        <div style="font-size:14px;font-weight:400;line-height:1.6;font-family:'Abhaya Libre',Arial,sans-serif;">அமைச்சரவை முடிவு அல்லது வர்த்தமானியில் பிரசுரிக்கப்பட்ட சட்டமூலங்களின்படி,  நடவடிக்கை எடுக்கப்பட்டுள்ளது, ஆனால் அது முழுமையாக செயல்படுத்தப்படவில்லை</div>
+      </div>
+      <div class="focus-card" style="min-width:160px;max-width:200px;align-items:flex-start;padding:20px 14px;">
+        <img src="Progress statuses/4.4 Kept.png" alt="Kept" style="width:48px;height:48px;object-fit:contain;image-rendering:auto;border-radius:6px;margin-bottom:14px;" />
+        <div style="font-weight:700;font-size:0.9rem;font-family:'Abhaya Libre',Arial,sans-serif;margin-bottom:6px;">நிறைவேற்றப்பட்டது</div>
+        <div style="font-size:14px;font-weight:400;line-height:1.6;font-family:'Abhaya Libre',Arial,sans-serif;">வாக்குறுதி முழுமையாக செயல்படுத்தப்பட்டுள்ளது</div>
+      </div>
+      <div class="focus-card" style="min-width:160px;max-width:200px;align-items:flex-start;padding:20px 14px;">
+        <img src="Progress statuses/4.5 Broken.png" alt="Broken" style="width:48px;height:48px;object-fit:contain;image-rendering:auto;border-radius:6px;margin-bottom:14px;" />
+        <div style="font-weight:700;font-size:0.9rem;font-family:'Abhaya Libre',Arial,sans-serif;margin-bottom:6px;">மீறப்பட்டது</div>
+        <div style="font-size:14px;font-weight:400;line-height:1.6;font-family:'Abhaya Libre',Arial,sans-serif;">வாக்குறுதி முரண்பட்டது அல்லது மாற்றப்பட்டது</div>
+      </div>
+    </div>
+  </div>
+  <div class="data-sources-section">
+    <div class="focus-title">தரவு மூலங்கள்</div>
+    <div class="data-cards" style="margin-bottom: 28px; gap: 20px;">
+      <div class="data-card" style="min-width:260px;max-width:300px;padding:24px 12px;">
+        <span class="data-icon">📄</span>
+        <div>
+          <h3 style="margin-bottom:2px; font-weight: bold;">பொது வெளியில் கிடைக்கும் தகவல்கள்</h3>
+          <p style="margin:0; font-weight: 400;">அரசாங்கத்தின் அதிகாரபூர்வ மூலங்களில் இருந்து பொது வெளியில் கிடைக்கும் இணையத் தகவல்கள்</p>
+        </div>
+      </div>
+      <div class="data-card" style="min-width:260px;max-width:300px;padding:24px 12px;">
+        <span class="data-icon">📬</span>
+        <div>
+          <h3 style="margin-bottom:2px; font-weight: bold;">அரசாங்கத்தின் பதில்கள்</h3>
+          <p style="margin:0; font-weight: 400;">தகவல் அறியும் உரிமை (RTI) கோரிக்கைகளுக்கான அரசாங்கத்தின் பதில்கள்</p>
+        </div>
+      </div>
+      <div class="data-card" style="min-width:260px;max-width:300px;padding:24px 12px;">
+        <span class="data-icon">👥</span>
+        <div>
+          <h3 style="margin-bottom:2px; font-weight: bold;">பொதுமக்கள் சார்ந்த புதுப்பிப்புகள்</h3>
+          <p style="margin:0; font-weight: 400;">பொதுமக்களால் சமர்ப்பிக்கப்பட்டு வெரிட்டே ரிசர்ச்சில் உள்ள பாராளுமன்ற ஆராய்ச்சி குழுவால் சரிபார்க்கப்பட்ட புதுப்பிப்புகள்</p>
+        </div>
+      </div>
+    </div>
+    <!-- Official Government Sources Q&A -->
+    <div style="max-width:900px;margin:0 auto 0 auto;padding-left:0;padding-right:0;text-align:left;">
+      <strong>அரசாங்கத்தின் அதிகாரப்பூர்வ மூலங்கள் எவை?</strong>
+      <p style="margin:8px 0 0 0; line-height:1.6;">
+        எங்கள் மூலங்கள் அரசாங்கத்தின் அதிகாரப்பூர்வ ஆவணங்கள் மற்றும் அரசாங்கத்தால் செய்யப்பட்ட வாக்குறுதிகளின் முன்னேற்றம் குறித்த சரிபார்க்கப்பட்ட தகவல்களை வழங்கும் பொதுவில் அணுகக்கூடிய பதிவுகள் ஆகும். இந்த ஆதாரங்களில் சில அமைச்சரவை முடிவுகள், பட்ஜெட் ஆவணங்கள், வர்த்தமானி ஆவணங்கள், சட்டங்கள், ஆண்டு அறிக்கைகள் மற்றும் அரசாங்க வலைத்தளங்களில் கிடைக்கும் தரவுகள் ஆகியவை அடங்கும், அரச அதிகாரிகளால் வெளியிடப்படும் கருத்துகள் அதிகாரப்பூர்வ ஆதாரங்களாகக் கருதப்படுவதில்லை.
+      </p>
+    </div>
+  </div>
+
+  <!-- Visit the Anura Meter Button (moved to bottom) -->
+
+  <div style="max-width:900px;margin:32px auto 24px auto;padding:0 20px;text-align:justify;">
+    <strong>நாம் எதைக் கண்காணிக்கிறோம்?</strong>
+    <p style="margin:8px 0 0 0; line-height:1.6;">
+      கண்காணிப்புக்காகத் தெரிந்தெடுக்கப்பட்ட 22 வாக்குறுதிகள், தேர்தல் விஞ்ஞாபனத்தில் அதிக பொது நலன் சார்ந்த மிக முக்கியமான கூறுகள் குறித்த எங்கள் மதிப்பீட்டின் அடிப்படையில் அமைந்தவை. இது ஒரு சிறந்த முயற்சியாகும், இதில் சிறிய தவறுகள் மற்றும் மேற்பார்வைகள் ஏற்படக்கூடும். ஏதேனும் கவனக்குறைவான பிழைகளுக்கு திருத்தங்களை மேற்கொள்ள எங்களுக்கு உதவுமாறு பொதுமக்களை நாங்கள் ஊக்குவிக்கிறோம்.
+    </p>
+    <p style="margin:8px 0 0 0; line-height:1.6;">
+      இந்த தளத்தில் ஒரு வாக்குறுதியைச் சேர்ப்பது அல்லது தவிர்ப்பது ஒரு அங்கீகாரமாகக் கருதப்படக்கூடாது. அனுர மீட்டர் மூலம் கிடைக்கும் தரவுகளைப் பயன்படுத்தும் எந்தவொரு தனிநபரும் அல்லது நிறுவனமும் அவர்களின் ஈடுபாடு மற்றும் விளக்கத்தின் அடிப்படையில்  அளிக்கும் எந்தவொரு கருத்துகள், பார்வைகள், முடிவுகள் போன்றவற்றுக்கு வெரிட்டே ரிசர்ச் பொறுப்பேற்காது.
+    </p>
+  </div>
+
+  <div style="width:100%;display:flex;justify-content:center;margin:32px 0 40px 0;">
+    <a href="https://manthri.lk/ta/anura-meter" target="_blank" rel="noopener noreferrer" class="anura-btn">அனுரா மீட்டரை அணுகவும்</a>
+  </div>
+
+  <script>
+    // Simple dropdown logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.querySelector('.dropdown > button');
+      var content = document.querySelector('.dropdown-content');
+      if(btn && content) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+        });
+        document.body.addEventListener('click', function() {
+          content.style.display = 'none';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
