@@ -170,6 +170,23 @@
       margin: 24px auto 0 auto;
       padding: 0 20px;
     }
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      word-break: break-word;
+      margin-bottom: 18px;
+      margin-top: 0;
+      text-align: justify;
+    }
+    @media (max-width: 600px) {
+      .about-section {
+        padding: 0 8px;
+      }
+      .about-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
     .focus-card p {
       margin: 0;
       text-align: left;
@@ -221,13 +238,20 @@
       font-weight: 400 !important;
       font-size: 14px !important;
     }
+    .banner-desktop { display: block !important; }
+    .banner-mobile { display: none !important; }
+    @media (max-width: 600px) {
+      .banner-desktop { display: none !important; }
+      .banner-mobile { display: block !important; }
+    }
   </style>
 </head>
 <body>
   <!-- Banner Section -->
   <div class="banner" style="position:relative;">
     <a href="https://manthri.lk/ta/anura-meter" target="_blank" rel="noopener noreferrer" style="display:block;">
-      <img src="Anura Meter Banner_Tamil.png" alt="Anura Meter Banner" style="display:block; width:100%; border:none; box-shadow:none;" />
+      <img src="Anura Meter Banner_Tamil.png" alt="Anura Meter Banner" class="banner-desktop" style="width:100%; border:none; box-shadow:none;" />
+      <img src="Tamil_Mobile_Banner.png" alt="Anura Meter Banner" class="banner-mobile" style="width:100%; border:none; box-shadow:none;" />
     </a>
     <div style="position:absolute;top:20px;right:24px;z-index:2;">
       <div class="dropdown" style="position:relative;display:inline-block;">
