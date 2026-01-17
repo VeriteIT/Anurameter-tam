@@ -82,6 +82,9 @@
       align-items: flex-start;
       gap: 0;
       transition: box-shadow 0.2s;
+      overflow: hidden;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .focus-card:hover {
       box-shadow: 0 8px 24px rgba(60,72,88,0.18);
@@ -191,22 +194,20 @@
       margin: 0;
       text-align: left;
       text-indent: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     @media (max-width: 700px) {
       .focus-cards {
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: center;
       }
       .focus-card {
-        min-width: 30%;
-        max-width: 32%;
-        flex: 1 1 30%;
+        min-width: 100%;
+        max-width: 100%;
+        flex: 1 1 100%;
         margin-bottom: 18px;
-      }
-      .focus-card:nth-child(n+4) {
-        min-width: 48%;
-        max-width: 49%;
-        flex: 1 1 48%;
+        height: auto;
       }
     }
     .anura-btn {
@@ -280,7 +281,7 @@
       இந்த 171 வாக்குறுதிகளின் முன்னேற்றத்தைக் கண்காணிக்க, தொடர்புடைய அரசாங்க அமைச்சுளுக்கும் நிறுவனங்களுக்கும் 41 தகவல் அறியும் உரிமை (RTI) கோரிக்கைகளைச் சமர்ப்பித்தோம். இதில் 23 RTI கோரிக்கைகள் மட்டுமே ஏற்றுக்கொள்ளப்பட்டன, அவற்றில் 15 மட்டுமே பயன்படுத்தக்கூடிய தகவல்களை வழங்கின. அரசாங்கத்திடமிருந்து கிடைத்த குறைந்தளவிலான பதில்கள் காரணமாக, அதிக உயர் பொதுநலன் சார்ந்த 22 வாக்குறுதிகளை மட்டும் உள்ளடக்கிய ஒரு சிறிய எண்ணிக்கையான வாக்குறுதிகளைக் கண்காணிப்பதன் மூலம் தொடங்க குழு முடிவு செய்தது. கண்காணிக்கப்படும் 30 வாக்குறுதிகளில் ஏழு வாக்குறுதிகள் பொதுமக்களின் கருத்துக்களின் அடிப்படையில் சேர்க்கப்பட்டுள்ளன.
     </p>
     <p style="text-align: justify;">
-      Manthri.lkயானது அனுர மீட்டரில் கண்காணிக்கப்படும் வாக்குறுதிகளின் எண்ணிக்கையை அதிகரிக்க எதிர்பார்க்கிறது. பொதுமக்கள் வெளிப்படுத்தும் ஆர்வம் மற்றும் தகவல்களை அணுகும் மேம்பட்ட வசதி ஆகியவற்றின் அடிப்படையில் இதைச் முன்னெடுப்போம்.
+      Manthri.lkயானது அனுர மீட்டரில் கண்காணிக்கப்படும் வாக்குறுதிகளின் எண்ணிக்கையை தொடர்ந்து அதிகரிக்க எதிர்பார்க்கிறது. பொதுமக்கள் வெளிப்படுத்தும் ஆர்வம் மற்றும் தகவல்களை அணுகும் மேம்பட்ட வசதி ஆகியவற்றின் அடிப்படையில் இதைச் முன்னெடுப்போம்.
     </p>
     <p style="text-align: justify;">
       நாம் எவ்வாறு முன்னேற உத்தேசித்துள்ளோம் என்பது பின்வருமாறு: தற்போதுள்ள 5 கருப்பொருள்களின் கீழ் ஒரு புதிய வாக்குறுதியைச் இணைப்பதற்கு நீங்கள் <a href="https://www.change.org/?redirect=false" target="_blank">Change.org</a> இல் ஒரு மனுவைத் ஆரம்பித்து அதை எங்களுடன் பகிர்ந்து கொள்ளலாம். அந்த மனுவுக்கு ஆதரவு கிடைத்தால் – அதாவது, குறைந்தபட்சம் 500 கையொப்பங்கள் கிடைத்தால், அதிகப் பார்வைக்கு உதவும் வகையில், மூன்று மாதங்களுக்கு Manthri.lk தளத்தில் அந்த மனு இணைப்படும். அந்த நேரத்தில் கணிசமான பொது மக்களின் ஆதரவு கிடைத்தால், குறைந்தபட்சம் 5,000 கையொப்பங்கள் கிடைத்தால், அதை நாங்கள் கண்காணிப்பான் பட்டியலில் இணைப்போம்.
@@ -297,7 +298,7 @@
   <div class="container" style="margin-top: 40px;">
     <div class="focus-title">கவனம் செலுத்தும் முக்கிய விடயங்கள்</div>
     <div class="focus-cards" style="flex-wrap:nowrap;overflow:visible;">
-              <div class="focus-card" style="width:220px;height:320px;align-items:flex-start;padding:20px 14px;">
+              <div class="focus-card" style="width:220px;height:auto;min-height:320px;align-items:flex-start;padding:20px 14px;">
           <span class="focus-icon">
             <!-- Social Protection: Heart SVG -->
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 24S4 17 4 10.5C4 7 7 4 10.5 4C12.5 4 14 5.5 14 5.5C14 5.5 15.5 4 17.5 4C21 4 24 7 24 10.5C24 17 14 24 14 24Z" stroke="#111" stroke-width="2" fill="white"/></svg>
